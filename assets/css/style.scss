@@ -1,0 +1,12 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+header { background: #A32; padding-bottom: 0;  }
+
+#content-wrapper {
+    padding-top: 20px;
+    border-top: solid 1px #fff;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
+}
