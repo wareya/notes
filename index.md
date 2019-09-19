@@ -1,3 +1,6 @@
-## Test
+## notes
 
-This is a test.
+Nothing special here.
+
+### Random explanations
+[事情がある](expo/jijou.md)
