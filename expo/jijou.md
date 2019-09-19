@@ -1,6 +1,6 @@
 ## 事情がある
 
-（誰かに・は）事情がある means that someone "has something going on", so to speak. This can mean various different things; maybe they have a nasty secret or a dark past, maybe they were abused as a child, maybe they just experienced an important milestone in character development or vowed to save someone's life or something. Lots of possibilities.
+（誰か　に・には）事情がある means that someone "has something going on", so to speak. This can mean various different things; maybe they have a nasty secret or a dark past, maybe they were abused as a child, maybe they just experienced an important milestone in character development or vowed to save someone's life or something. Lots of possibilities.
 
 In a way, it's almost like 事情がある means that there's *complicating circumstances* behind someone's motivations, actions, interactions with other people, etc. Not just that they, like everyone else, *do indeed have* stuff going on, but rather that it's of particular noteworthiness for some reason or another.
 
