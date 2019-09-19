@@ -1,8 +1,4 @@
 theme: jekyll-theme-architect
 github:
   is_project_page: false
-defaults:
-    scope:
-      path: ""
-    values:
-      lang: "ja-JP"
+lang: "ja-JP"
