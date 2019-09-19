@@ -10,3 +10,13 @@ header { background: #A32; padding-bottom: 0;  }
     border-top: solid 1px #fff;
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
 }
+
+blockquote {
+    padding: 10px 10px 10px 30px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px;
+    border-left: 10px dashed gray;
+    background-color: #222;
+    color: #b7b7bf;
+}
