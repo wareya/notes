@@ -26,4 +26,4 @@ This nuance extends to various similar phrases, and 事情 can be modified. For 
 >
 >　無論、あの年齢で冒険者をしている以上、**何らかの事情を持っている**ことは確かでしょう。多くの冒険者たちと同様にね。しかし、私たちが心配していたような陰謀や策略の類は存在しなかった。それが、情報を集めた末の結論です。
 >
-> *Of course, given that she's living as an adventurer at such a young age, it's clear that **her circumstances are unusual**. As is quite common for adventurers. But there's no intruige or deception of the sort that we were worried about. That is the conclusion that lay at the end of my investigation.*
+> *Of course, given that she's living as an adventurer at such a young age, it's clear that **her circumstances must be unusual**. As is quite common for adventurers. But there's no intruige or deception of the sort that we were worried about. That is the conclusion that lay at the end of my investigation.*
