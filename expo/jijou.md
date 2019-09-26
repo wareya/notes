@@ -36,6 +36,6 @@ This nuance extends to various similar phrases, and 事情 can be modified. For 
 >
 >【ファング】「はあ、なるほど。で、なんで殺殺言ってんだよ」
 >
->【ティアラ】「ファングさんいけませんわ。きっと深い事情がありますのよ」
+>【ティアラ】「ファングさんいけませんわ。きっと**深い事情があります**のよ」
 >
 > *(comprehension left to reader)*
