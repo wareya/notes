@@ -23,6 +23,8 @@ It's true that things like 度 and 馬 have straightforward and hard-to-misunder
 
 And that's just looking at ateji. Not even "words don't mean what the sum of their parts mean" words like 適当, which are far more problematic to the kanji-focused learner.
 
+The absolute best you can expect from isolated kanji study in terms of vocabulary recognition ability is the kind of vocabulary recognition ability that allows you to read the labels on a bidet through process of elimination or something.
+
 This is not to say that learning how Kanji are used is not useful, just that the (small number of) people who are confused into thinking that Kanji knowledge will work as a substitute for vocabulary knowledge are going to waste a lot of energy.
 
 ## Isolated Kanji knowledge does not map consistently to recognition ability
