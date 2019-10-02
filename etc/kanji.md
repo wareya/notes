@@ -104,3 +104,5 @@ However, there may eventually come a point where things happen too infrequently 
 This is the case with some relatively-uncommon kanji and their readings. At that point you might as well memorize them if you happen to know that you need to know them, rather than waiting an extra seven or eight years to have seen them enough to know that you'll never forget them again.
 
 Especially because, at such a stage, the *actual volume* of actively-studied kanji will be very low, such that it will be very low-effort to retain them with even rudimentary memorization practices, like physical flashcards.
+
+...By the way, stroke order is essentially a complete non-problem.
