@@ -39,6 +39,8 @@ Someone who studied kanji in isolation would not have any idea which reading to 
 
 平等 is also one of those words with a fairly specific meaning where the two kanji it's spelled with do not necessarily narrow down the implied meaning far enough to know for sure how specific 平等's meaning is unless you just *know* it.
 
+Learning Kanji readings or keywords does not help you here. Only vocabulary knowledge does.
+
 ## Putting the cart before the horse
 
 This should go without saying, but if you don't know any Japanese, it's not useful to train the ability to write individual kanji as prompted by English keywords. There are better less-time-consuming ways to get the positive effects of kanji writing practice.
