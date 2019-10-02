@@ -37,7 +37,7 @@ The other day I misread 平等 despite knowing both of the kanji in it ***very, 
 
 Someone who studied kanji in isolation would not have any idea which reading to pick here either. It's not possible to know with any certainty that 平等 is read as びょうどう instead of へいどう unless you just *know* it.
 
-平等 is also one of those words with a fairly specific meaning where the two kanji it's spelled with do not necessarily narrow down the implied meaning far enough to know for sure how specific 平等's meaning is unless you just *know* it.
+平等 is also one of those words with a fairly (but not incredibly) specific meaning where the two kanji it's spelled with do not necessarily narrow down the implied meaning far enough to know for sure just exactly how specific 平等's meaning is unless you just *know* it.
 
 Learning Kanji readings or keywords does not help you here. Only vocabulary knowledge does.
 
