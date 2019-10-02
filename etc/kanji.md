@@ -1,4 +1,4 @@
-## Pitfalls of Early Kanji Study
+# Pitfalls of Early Kanji Study
 
 It is unfortunately not uncommon for people who start out learning Japanese to receive bad advice that tells them to dedicate most of their effort to learning Kanji in isolation from the rest of the language for a couple months before moving on to other basics.
 
@@ -13,7 +13,7 @@ The position expressed here is based on watching several beginning learners stru
 
 With that out of the way, let's go down problem by problem...
 
-### Kanji aren't words
+## Kanji aren't words
 
 This should be obvious, but some people start doing RTK ("Remembering The Kanji") or Kanjidamage assuming that they're going to be able to understand the words in Japanese text once they're done, even if they can't actually verbalize any of them and don't know any of the grammar. This happens because things like RTK and Kanjidamage upsell the value of learning Kanji without explaining well-enough *how Japanese writing actually uses Kanji in the first place*.
 
@@ -25,19 +25,19 @@ And that's just looking at ateji. Not even "words don't mean what the sum of the
 
 This is not to say that learning how Kanji are used is not useful, just that the (small number of) people who are confused into thinking that Kanji knowledge will work as a substitute for vocabulary knowledge are going to waste a lot of energy.
 
-### Isolated Kanji knowledge does not map consistently to recognition ability
+## Isolated Kanji knowledge does not map consistently to recognition ability
 
 I have been learning Japanese for five years. I know the overwhelming majority of the Joyo kanji quite well. If I see a made-up word that I'm pretty sure is read with on'yomi, I have a very good chance of reading it and guessing its meaning correctly.
 
 The other day I misread 平等 despite knowing both of the kanji in it ***very, very well*** for no reason other than that I have not seen 平等 often enough for my brain to decide to recognize it as its own entity and that, among very commong words, 平 is read as へい far more than as ひょう or びょう. In fact, among daily-use vocabulary, 平等 can be considered the only important word where へい is *not* how 平 is read.
 
-### Putting the cart before the horse
+## Putting the cart before the horse
 
 This should go without saying, but if you don't know any Japanese, it's not useful to train the ability to write individual kanji as prompted by English keywords. There are better less-time-consuming ways to get the positive effects of kanji writing practice.
 
 Leave actually getting good at writing Japanese until you know enough Japanese that it's more than a party trick.
 
-### Knowing so little Japanese that you don't know when your resources are lying to you
+## Knowing so little Japanese that you don't know when your resources are lying to you
 
 Until very, very, very recently, Remembering The Kanji was full of tons and tons of downright wrong "keywords" that gave backwards ideas about how Kanji were used. For example, it said that 町 was "village", and that 村 meant "town". This is ***completely backwards*** and there is ***no way*** that someone with a functional understanding of Japaense could have possibly made this mistake when constructing a learning resource.
 
@@ -47,7 +47,7 @@ The fact that this is now considered errata by RTK's author or publisher does no
 
 Kanjidamage has similar problems, worsened by how goofy it tries to be.
 
-### Getting scared off by long lists of kun'yomi
+## Getting scared off by long lists of kun'yomi
 
 ![img](https://i.imgur.com/R7fdinA.png)
 
@@ -57,7 +57,7 @@ In fact, kun'yomi are really just Japanese Words, which exist entirely independe
 
 Not knowing this means being scared away by the prospect of having to memorize a dozen random readings with no rhyme or reason to what's going on.
 
-### It is entirely possible to get past the "kanji look like weird exotic/esoteric scribbles" stage without kanji study
+## It is entirely possible to get past the "kanji look like weird exotic/esoteric scribbles" stage without kanji study
 
 This is often cited by early isolated kanji study diehards as the #1 reason to go through with it.
 
@@ -69,23 +69,23 @@ But none of that ever actually caused me enough trouble to make me struggle or d
 
 Your brain is good at getting used to things. Have a little faith in it.
 
-## Benefits of isolated kanji study (looking forward)
+# Benefits of isolated kanji study (looking forward)
 
 I'm sure there's something I missed, and I may very well go back and add a few more sections in the future. But I'd like to end this with a list of **benefits** of kanji study... the difference being that
 
 ***this section is geared towards people who already have a functional grasp on Japanese***.
 
-### Japanese people learn Kanji in school, so you might want to learn the Kanji too
+## Japanese people learn Kanji in school, so you might want to learn the Kanji too
 
 Just not when you don't know enough to put things in perspective. Both in terms of the material you're learning and what you're going to do with it.
 
 It is very much not at all uncommon for Japanese writing to draw on shared cultural knowledge--in fact, *it happens constantly*--so it should be no surprise to hear that they draw on the shared knowledge of standard educational material as well. Without having that knowledge *in some explicit form or another* you're lacking one more perspective natives have that you don't on what you're reading and how Kanji are being used or discussed in it.
 
-### If you have plans to move to Japan *Very Soon*, don't embarass yourself by being unable to write your address
+## If you have plans to move to Japan *Very Soon*, don't embarass yourself by being unable to write your address
 
 Enough said.
 
-### Sometimes passively acquired knowledge hits a wall that active study would be better for
+## Sometimes passively acquired knowledge hits a wall that active study would be better for
 
 It is very true that, the overwhelming majority of the time, passive acquisition vastly outstrips active study for developing recognition abilities. Practice makes perfect. If you want to get good at recognizing something, you practice recognizing it. Easy.
 
