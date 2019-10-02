@@ -1,3 +1,5 @@
+Date: 2019-10-02
+
 # Pitfalls of Early Kanji Study
 
 It is unfortunately not uncommon for people who start out learning Japanese to receive bad advice that tells them to dedicate most of their effort to learning Kanji in isolation from the rest of the language for a couple months before moving on to other basics.
