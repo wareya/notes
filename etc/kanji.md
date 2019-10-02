@@ -35,6 +35,10 @@ I have been learning Japanese for five years. I know the overwhelming majority o
 
 The other day I misread 平等 despite knowing both of the kanji in it ***very, very well*** for no reason other than that I have not seen 平等 often enough for my brain to decide to recognize it as its own entity and that, among very commong words, 平 is read as へい far more than as ひょう or びょう. In fact, among daily-use vocabulary, 平等 can be considered the only important word where へい is *not* how 平 is read.
 
+Someone who studied kanji in isolation would not have any idea which reading to pick here either. It's not possible to know with any certainty that 平等 is read as びょうどう instead of へいどう unless you just *know* it.
+
+平等 is also one of those words with a fairly specific meaning where the two kanji it's spelled with do not necessarily narrow down the implied meaning far enough to know for sure how specific 平等's meaning is unless you just *know* it.
+
 ## Putting the cart before the horse
 
 This should go without saying, but if you don't know any Japanese, it's not useful to train the ability to write individual kanji as prompted by English keywords. There are better less-time-consuming ways to get the positive effects of kanji writing practice.
