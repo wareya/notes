@@ -1,6 +1,9 @@
-## notes
+# notes
 
 Nothing special here.
 
-### Random explanations
+## random explanations
 [事情がある](expo/jijou.md)
+
+## rants, etc
+[Kanji study](etc/kanji.md)
