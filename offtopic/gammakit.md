@@ -439,7 +439,7 @@ myothercode();
 
 It's also possible to provide your own grammar when parsing a string into an AST.
 
-```gmc
+```gml
 globaldef reprocess_vn_script(ast)
 {
     if(ast{isparent})
