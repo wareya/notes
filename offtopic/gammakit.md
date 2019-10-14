@@ -193,7 +193,7 @@ for(var j = 0; j < 10; {j += 1;})
 }
 ```
 
-The "var j = 0;" expression could be a block too, but this would not be useful unless j were already declared outside of the for loop and you wanted to confuse somebody.
+The "var j = 0" statement could be a block too, but this would not be useful unless j were already declared outside of the for loop and you wanted to confuse somebody.
 
 #### For (each)
 
