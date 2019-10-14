@@ -1,6 +1,6 @@
-Regardless of how much this article sounds like a thought experiment masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/).
+Regardless of how much this article sounds like a thought experiment or piece of satire masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/). I am not an academic and I have not studied programming language design formally. I just did this for fun.
 
-This article is incomplete; I am in the process of writing it.
+This article is mostly done, but has not been edited, and might be missing parts I forgot about. Gammakit is also in a state of design flux, so this article might change dramatically or fall slightly out of date (though I will do my best to keep it in sync with gammakit's current development status).
 
 # Gammakit
 
@@ -112,7 +112,7 @@ Coming off of the lack of reference semantics once again, when a generator state
 
 While we're here, gammakit also has array, set, and dict literals, unlike old version of gml:
 
-```
+```gml
 var test_array = ["asdf", 0, ["test", 0]];
 var test_dict = {"asdf" : 1, 0 : "a"};
 var test_set = set {"asdf", 0};
@@ -155,7 +155,7 @@ If a variable does not have a value assigned to it upon declaration, it contains
 
 Variables can be reassigned in the following ways:
 
-```
+```gml
 x = 10;
 x += 10; // and the other arithmetic operations
 x++; // equivalent to x += 1;
@@ -182,7 +182,7 @@ These compile down to while loops with a bit of a prelude. Yes, initialization a
 
 One fun thing that gammakit borrows from game maker is that the "init" and "loop" elements of the header can be *entire blocks*, like so:
 
-```
+```gml
 for(var j = 0; j < 10; {j += 1;})
 {
     if(j == 4)
@@ -199,7 +199,7 @@ The "var j = 0;" expression could be a block too, but this would not be useful u
 
 Foreach loops look like this:
 
-```
+```gml
 for(thing in test_array)
     print(thing);
 ```
@@ -450,7 +450,7 @@ Gammakit provides bindings. These are basically the standard library. Bindings a
 
 Arrow bindings are special bindings that look like methods and are invoked on arbitrary variables (or expressions) with syntax like `var->arrow_binding();`. Arrow bindings are for things like "length of this array", "mutably pop the value from the back of this array and return it", etc. This syntax (rather than using .) solely comes from the fact that gammakit is dynamically typed and can't know whether the expression to the left of the -> (or .) is an instance identifier, a number, a string, or what. Here's why it needs to know: `myvariable.someidentifier()` would be ambiguous about whether `someidentifier` is a special binding of some sort or a method in some instance, because the type of `myvariable` is not known, so the interpreter would have to access `myvariable` and check its type at runtime to figure out what `someidentifier` even is. This is quite nasty, so I decided to use a separate syntax.
 
-```
+```gml
 var xaa = "myarray";
 print(xaa);
 xaa->replace_char(1, "Ｙ");
