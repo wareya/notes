@@ -79,7 +79,7 @@ The second thing it requires is generators or semicoroutines. This is so that "y
 
 ## The basics of gammakit
 
-Gammakit is fundamentally a vaguely-C-like imperative language, despite how little it actually has in common with real C. It has the same basic kind of control flow
+Gammakit is fundamentally a vaguely-C-like imperative language, despite how little it actually has in common with real C. It has the same basic kind of control flow mechanisms and the same general model for how basic algorithms are constructed. All of the specifics are quite different, though, and the set of high-level programming features available to the programmer is completely different.
 
 ### Types and scope
 
@@ -94,7 +94,7 @@ The rudimentary types in gammakit are:
 * Set
 * Function (binding or user-defined)
 * Generator state
-* Instance (carries pointer-like semantics)
+* Instance (identifier; carries pointer-like semantics)
 * Object
 * Custom (not used by gammakit itself; available for parent application bindings to pass data into and out from gammakit)
 
