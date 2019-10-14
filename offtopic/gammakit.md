@@ -549,7 +549,7 @@ while(test_state)
 // the generatorstate value inside of the variable "test_state" is now consumed
 ```
 
-This loop makes the generator produce the numbers 10 through 0, and then finally also produce the string "generator has finalized".
+This loop makes the generator produce the numbers 10 through 1, and then finally also produce the string "generator has finalized".
 
 The statement `var test_state = gentest(10);` "initializes" the generator description in "gentest" into a generator state value which is then stored in the variable "test_state".
 
