@@ -126,6 +126,8 @@ The main binary arithmetic operators (`+`, `-`, `*`, `/`, and `%`) also have bin
 
 Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is defined as "n >= 0.5 means true, otherwise means false".
 
+In addition to the following, gammakit also has a ternary operator, defined grammatically as follows so that there's nothing ambiguous about it: `$parenexpr$ ? $parenexpr$? : $parenexpr$`
+
 ##### Binary
 
 * `&&`/`and`, `||`/`or` : Basic boolean "and" and "or". Operate on the truthiness of numerical experssions. Have short-circuiting semantics. There are no other short-circuiting semantics anywhere in gammakit. The preferred representations are `and` and `or`, not `&&` and `||`, though both are supported.
@@ -233,6 +235,8 @@ default:
 }
 ```
 
+This basically eliminates all of the bad things about switch statements and makes it possible to use them as a compact/better-structured version of if/else chains rather than exclusively relegating them to only doing things that would be done better with pattern-matching facilities (that gammakit does not have).
+
 #### With
 
 There are two forms of "with" in gammakit. The first is a loop over all extant instances of an object in the world, with instance scope access shenanigans. The second is a block run against a single instance, only with the instance scope access shenanigans. The second form requires an object type annotation; otherwise the compiler cannot know what variables the instance has when doing lexical scope things.
@@ -251,25 +255,207 @@ with(Character)
 }
 ```
 
+The type annotation of the non-loop version and the loopy nature of the loop version should, hopefully, reduce any disgust that might come from people who know how bad JS's "with" is.
+
 #### Goto
 
-Unfortunately, gammakit does not have a "goto". I couldn't figure out how to make it work cleanly and safely. I hope that having generators and first-class functions makes up for not having it.
+Unfortunately, gammakit does not have a "goto". I couldn't figure out how to make it work cleanly and safely. I hope that having generators and first-class functions and lambdas makes up for not having it.
 
 ### User-defined functions
 
+User defined functions can be declared anywhere that you can make a normal statement and accessing their identifiers works the same way as accessing normal lexically scoped variables. There's also a way to declare functions into the global scope, which is okay because user-defined function identifiers are read-only. More on global functions soon.
+
+Functions return the number 0.0 by default if they fall through their last line.
+
+It's true that the identifiers of user-defined functions are read-only, but you can pass the value contained in those identifiers around freely and store them in variables. This value describes everything there is about the function.
+
+```gml
+def rewrite(ast, callback)
+{
+    ast = callback(ast);
+    if(ast["isparent"])
+    {
+        var max = ast["children"]->len();
+        for(var i = 0; i < max; i += 1)
+            ast["children"][i] = rewrite(ast["children"][i], callback);
+    }
+    return ast;
+}
+```
+
+Functions can access their own name in their own body, allowing for recursion, despite the combination of first-class functions, no reference semantics, and lexical scope making it seem like this should not be possible. The compiler and interpreter work together to make sure that there's always an identifier containing the function's description in scope, with the same name as the function is declared with.
+
 ### Lambdas
+
+Lambdas are basically the same as user-defined functions, except that they can capture (by value, to specified variable names) and that they don't have an inherent identifier. The identifier used for recursion in lambdas is, therefore, lambda_self.
+
+```gml
+var countdown = [](x)
+{
+    if(x > 0)
+    {
+        print(x);
+        lambda_self(x-1);
+    }
+    else
+        print("Liftoff!");
+};
+
+countdown(10);
+```
 
 ### Globals
 
+There are three forms of global identifier in gammakit. The first is global variables, which must be prefixed with `global.` when accessed. The second is bare global variables, which must be assigned upon declaration and cannot be reassigned or mutated, and must additionally have identifiers that begin with an uppercase ascii letter. The third is global functions, which like normal user-defined functions have immutable identifiers, but can be accesse from anywhere without `global.`, unlike global variables, and do not need their first character to be an uppercase ascii letter.
+
+Note that because instance identifiers themselves are not mutated when you modify a variable in an instance, you can mutate instances through bare global variables.
+
+```gml
+globalvar x;
+
+print(global.x);
+global.x = 10;
+print(global.x);
+
+globaldef testfunc()
+{
+    print("I was accessed!");
+}
+
+def call_testfunc()
+{
+    testfunc();
+}
+
+call_testfunc();
+```
+
+```gml
+bare globalvar Gravity = 0.06;
+
+bare globalvar MyChar = instance_create(Character);
+```
+
 ## Objects and instances
+
+Objects have a set of variables and methods which are specified in-place when the object is declared. These can be accessed through an instance identifier with the . operator (which was excluded from the normal binary operators because it does not parse the same way and does not work in a remotely similar way in the compiler either), and for variables, mutated as well.
+
+```gml
+obj Tile {
+    var sprite;
+    var x, y, offsets, bbox;
+    def create()
+    {
+        sprite = S_Tile;
+    }
+    def init(arg_x, arg_y)
+    {
+        x = 16+arg_x*32;
+        y = 16+arg_y*32;
+        
+        offsets = [-16, -16, +16, +16];
+        bbox = [0,0,0,0];
+        
+        update_bbox(id); // some global function that modifies id.bbox based on id.x etc
+    }
+}
+
+def make_tile(x, y)
+{
+    var tile = instance_create(Tile);
+    tile.init(x, y);
+}
+
+for(var i = 0; i < 20; i++)
+    make_tile(i,5-floor(i/4));
+```
 
 ## Code generation
 
+Gammakit provides functions for parsing text into an AST and compiling an AST into a function value (like a lambda). You can also provide your own grammar when parsing text into an AST, if you want to. I *might* add facilities for grabbing the ASTs of the current "file", or specific functions, parts of the program, but this is only a possibility.
+
+```gml
+var myf = compile_text("print(\"test\");");
+myf();
+
+var myast = parse_text("print(\"toast\");");
+
+var myotherast = myast;
+
+def rewrite(ast, callback)
+{
+    ast = callback(ast);
+    if(ast["isparent"])
+    {
+        var max = ast["children"]->len();
+        for(var i = 0; i < max; i += 1)
+            ast["children"][i] = rewrite(ast["children"][i], callback);
+    }
+    return ast;
+}
+
+myotherast = rewrite(myotherast, [](ast)
+{
+    if(ast["isparent"] and ast["text"] == "string" and ast["children"]->len() > 0)
+        if(!ast["children"][0]["isparent"] and !ast["children"][0]->contains("precedence") and ast["children"][0]["text"] == "\"toast\"")
+            ast["children"][0]["text"] = "\"not toast\"";
+    return ast;
+});
+
+var mycode = compile_ast(myast);
+mycode();
+var myothercode = compile_ast(myotherast);
+myothercode();
+```
+
 ## Generators
+
+Generators will probably be easiest to explain by example:
+
+```gml
+generator gentest(i)
+{
+    while(i > 0)
+    {
+        yield i;
+        i -= 1;
+    }
+    return "generator has finalized";
+}
+
+var test_state = gentest(10);
+
+// prints 10 through 1 then "generator has finalized"
+while(test_state)
+    print(invoke test_state);
+
+// the generatorstate value inside of the variable "test_state" is now consumed
+```
+
+This loop makes the generator produce the numbers 10 through 0, and then finally also produce the string "generator has finalized".
+
+The statement `var test_state = gentest(10);` "initializes" the generator description in "gentest" into a generator state value which is then stored in the variable "test_state".
+
+Generators truth-test as whether or not they have finalized, allowing you to use them as the argument to an "if" or "while".
+
+The "invoke" instruction ticks a generator until its next yield (or return) and produces the yielded or returned value, and if the argument of the "invoke" instruction was a variable, then that variable is updated with the new state of the generator (if it was a non-variable expression then the new generator state is thrown away).
+
+I mentioned this earlier, but generators can be forked just by assigning the value of one variable containing a generator state value to another variable. This copies the generator state value, which includes everything describing the current state of the generator (internally to the interpreter, this description is a function call frame).
 
 ## Bindings
 
+Gammakit provides bindings. These are basically the standard library. Bindings act just like global user-defined functions, except instead of moving interpreter control over to a new chunk of code an opening a new frame, they run some native code mid-interpreter-execution, which is pretty important if you want to do things like `print()`. Various aspects of gammakit as already described would make no sense or be downright impossible without bindings.
+
 ### Arrow bindings
+
+Arrow bindings are special bindings that look like methods and are invoked on arbitrary variables (or expressions) with syntax like `var->arrow_binding();`. Arrow bindings are for things like "length of this array", "mutably pop the value from the back of this array and return it", etc. This syntax (rather than using .) solely comes from the fact that gammakit is dynamically typed and can't know whether the expression to the left of the -> (or .) is an instance identifier, a number, a string, or what. Here's why it needs to know: `myvariable.someidentifier()` would be ambiguous about whether `someidentifier` is a special binding of some sort or a method in some instance, because the type of `myvariable` is not known, so the interpreter would have to access `myvariable` and check its type at runtime to figure out what `someidentifier` even is. This is quite nasty, so I decided to use a separate syntax.
+
+```
+var xaa = "myarray";
+print(xaa);
+xaa->replace_char(1, "Ｙ");
+print(xaa);
+```
 
 ## Embedding
 
