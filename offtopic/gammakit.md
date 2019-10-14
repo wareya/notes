@@ -22,7 +22,7 @@ The third and current attempt is written in rust. The codebase is approximately 
 
 ## Design hiccups
 
-Gammakit originally emulated lexical scope at runtime, with the (ad-hoc, bytecode-based) interpreter working entirely with strings for all variable names. When a variable was accessed, it would search up a stack of scopes looking for the first reference to a variable.
+Gammakit originally emulated static lexical scope at runtime, with the (ad-hoc, bytecode-based) interpreter working entirely with strings for all variable names. When a variable was accessed, it would search up a stack of scopes looking for the first reference to a variable.
 
 This also meant that you didn't know whether a piece of code was referencing unknown identifiers or not until it ran. On the other hand, it enabled something called "subroutine-like functions", which acted similarly to C macros in that they could access the visibility context that they were "called" in, but different in that they had to be structured exactly like functions (and indeed looked just like normal functions to the interpreter, just with a single flag flipped).
 
@@ -36,7 +36,7 @@ This wasn't a good enough speed increase, so I ended up scrapping the lexical sc
 
 Gammakit has a few operations that Do Something to a variable, rather than just storing a value in it or reading its value out onto the evaluation stack. These are things like +=, invoking a generator (more on that later), or using an "arrow" binding (described later; they can modify the value of a variable if called under one).
 
-The first way of implementing these was way back when lexical scope was emulated at runtime. When a variable had to be modified (not just overwritten), it would be found, have its value read out, have that value fed into something to get some other value out, then find it again but this time to insert a new value in instead of return its current value. The old implementation of variable access did not have any way for the interpreter to grab a mutable reference to a variable, so anything that had to mutate a variable in-place had to work like this instead.
+The first way of implementing these was way back when static lexical scope was emulated at runtime. When a variable had to be modified (not just overwritten), it would be found, have its value read out, have that value fed into something to get some other value out, then find it again but this time to insert a new value in instead of return its current value. The old implementation of variable access did not have any way for the interpreter to grab a mutable reference to a variable, so anything that had to mutate a variable in-place had to work like this instead.
 
 I eventually realized that this was a bad idea and slow, and (before moving to static, compile-time lexical scope) made variable accesses return an Rc<RefCell<...>> to a value. (In reality, it was a struct, so that there could be read-only and non-reference states, to support read-only identifiers and also using the same type for certain non-variable-related aspects of how the interpreter handles values.)
 
