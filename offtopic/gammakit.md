@@ -170,7 +170,7 @@ Statements can be grouped into blocks with {}, which create a new bubble of lexi
 
 ### Control flow
 
-Gammakit has high level control flow, just like any sane programming language, and this is a list of which high level control flow constructs it has. Control flow mechanisms generally do not require {} around their inner blocks like they do in rust. However, even if there is no {}, it's still a "block" with its own bubble of lexical scope.
+Gammakit has high level control flow, just like any sane programming language, and this is a list of which high level control flow constructs it has. Control flow mechanisms generally do not require {} around their inner blocks like they do in rust (unless, of course, those inner blocks consist of multiple statements, in which case the {} is necessary). However, even if there is no {}, it's still a "block" with its own bubble of lexical scope.
 
 #### If, else, while
 
