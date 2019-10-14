@@ -208,9 +208,48 @@ Foreach loops also work on generators, but more on that later.
 
 #### Switch (but not your uncle's switch)
 
-Switch statements are superficially similar to the switch statements from C, but their design deviates signfiicantly.
+Switch statements are superficially similar to the switch statements from C, but their design deviates significantly.
+
+First of all, cases can be arbitrary expressions, not just literal values or constants.
+
+Second of all, there is no fallthrough at all (and thus no need for a "break" or "continue" statement), and having multiple values test for the same case is just done by listing them with `,` (you know what? I lied earlier, this `,` short-circuits too, just like the `and` and `or` operators).
+
+Third of all, each case opens up its own implicit block of scope.
+
+Switches are an exception to the general rule that flow control facilities in gammakit do not require {}. Switches are a flow control facility that *does* require {}. And what's more, it's recommended to not indent the switch's {}, but rather the cases themselves, because those cases are where new scopes open and close, not the switch's {}.
+
+```gml
+switch (x)
+{
+case 0:
+    print("first block");
+case 1, "test", randomtestfunction():
+    var x = "test2"; // this is a new block, so it doesn't clash with the `var x = "test";` above
+    print("second block, this should run");
+case "test":
+    print("not run");
+default:
+    print("also not run");
+}
+```
 
 #### With
+
+There are two forms of "with" in gammakit. The first is a loop over all extant instances of an object in the world, with instance scope access shenanigans. The second is a block run against a single instance, only with the instance scope access shenanigans. The second form requires an object type annotation; otherwise the compiler cannot know what variables the instance has when doing lexical scope things.
+
+```gml
+with(i as Character) // "i" is a variable holding the identifier of an instance
+{
+    print(x); // this "x" is a property of the instance
+    x -= 1;
+}
+
+with(Character)
+{
+    var asdfe4 = 10; // declaring a variable in local lexical scope while in a with statement
+    printthing("this is an argument"); // printthing is a method of the Character object type; it's called against whatever instance is the context of the current iteration of the loop
+}
+```
 
 #### Goto
 
