@@ -83,7 +83,7 @@ Gammakit is fundamentally a vaguely-C-like imperative language, despite how litt
 
 ### Types and scope
 
-Gammakit is lexically scoped and dynamically typed. A few things stick out, though: compilation is (currently) single-pass, so functions can't access global variables declared below them, and functions can't access the lexical scope they're defined in (more on this later). Object types also cannot be accessed before they are declared, though this is less of a problem than it is in C/C++ because all instances have the same type, "instance" (more on this later).
+Gammakit is lexically scoped and dynamically typed. A few things stick out, though: compilation is (currently) single-pass, so functions can't access global variables declared below them, and functions can't access the lexical scope they're defined in (more on this later). Object types also cannot be accessed before they are declared, though this is less of a problem than it is in C/C++ because all instances have the same type, "instance identifier".
 
 The rudimentary types in gammakit are:
 
