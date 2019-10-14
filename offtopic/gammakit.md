@@ -164,7 +164,7 @@ x--; // equivalent to x -= 1;
 
 Yes, gammakit has ++ and -- statements. No, they are not expressions, and this means that there's no weird behavioral ordering nastiness going on. These special statements exist to make it so that C programmers don't have to bother themselves with `+= 1` and `-= 1` when writing manual for loops.
 
-There are a few more ways for variables to change value. These include arrow functions (more on that later) and invoking a generator (once again, more on that later).
+There are a few more ways for variables to change value. These include arrow bindings (more on that later) and invoking a generator (once again, more on that later).
 
 Statements can be grouped into blocks with {}, which create a new bubble of lexical scope. Variables can be declared absolutely anywhere within a block, but are only visible below their declaration, and until the block they were declared in closes.
 
@@ -487,6 +487,8 @@ print(xaa);
 xaa->replace_char(1, "Ｙ");
 print(xaa);
 ```
+
+One of the points of arrow bindings is that they do not copy the value out from inside of the variable they're called on if called on a variable (they work on expressions too); this means that it is not useful to be able to declare new arrow functions from inside of gammakit code, because gammakit does not have variable-level reference semantics, and arrow functions declared inside of gammakit code would not be able to give the same guarantee. This is important when, for example, calling an arrow function on a massive array. As such, it is not possible to declare arrow functions from inside gammakit code. You should use an instance and a method on it instead.
 
 ## Embedding
 
