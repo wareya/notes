@@ -1,3 +1,5 @@
+The projects described in this article *actually exist*. They're not a thought experiment masquerading as a design retrospective. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/).
+
 # Gammakit
 
 Gammakit is a toy programming language I'm making (in an unstable design/development state, possibly permanently) loosely inspired by Game Maker Language (herein "gml") and a couple concepts I picked up from partially reverse engineering cutscene scripting systems used in adventure games.
