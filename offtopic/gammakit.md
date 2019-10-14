@@ -479,6 +479,37 @@ ast = reprocess_vn_script(ast);
 globalvar script = compile_ast_generator(ast)();
 ```
 
+script.gmc:
+
+```gml
+"This is the end.";
+"The bitter, bitter end.";
+```
+
+how grammar.txt differs from the default grammar:
+
+```gml
+statement:
+$blankstatement$
+$statementlist$
+$declaration$ ;
+$bareglobaldec$ ;
+$condition$
+$foreach$
+$withstatement$
+$withasstatement$
+$switch$
+$funcdef$
+$globalfuncdef$
+$objdef$
+$binstate$ ;
+$unstate$ ;
+$instruction$ ;
+$funccall$ ;
+$invocation_call$ ;
+---> $string$ ; (this is added to data/rgammar.txt and doesn't exist in the default grammar)
+```
+
 ## Generators
 
 Generators will probably be easiest to explain by example:
