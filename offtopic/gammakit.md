@@ -34,7 +34,7 @@ Gammakit has a few operations that Do Something to a variable, rather than just 
 
 The first way of implementing these was way back when lexical scope was emulated at runtime. When a variable had to be modified (not just overwritten), it would be found, have its value read out, have that value fed into something to get some other value out, then find it again but this time to insert a new value in instead of return its current value. The old implementation of variable access did not have any way for the interpreter to grab a mutable reference to a variable, so anything that had to mutate a variable in-place had to work like this instead.
 
-I eventually realized that this was a bad idea and slow, and (before moving to static, compile-time lexical scope) made variable accesses return an Rc<RefCell<...>> to a value. (In reality, it was a struct, so that there could be read-only and non-reference states, to support read-only identifiers.)
+I eventually realized that this was a bad idea and slow, and (before moving to static, compile-time lexical scope) made variable accesses return an Rc<RefCell<...>> to a value. (In reality, it was a struct, so that there could be read-only and non-reference states, to support read-only identifiers and also using the same type for certain non-variable-related aspects of how the interpreter handles values.)
 
 Much later, concerned by the probable performance overhead of using RefCell, I moved to a way of returning references that utilized lifetimes to keep track of reference lifetime instead. It took a while to get working, but it works quite well, and I can't see any obvious ways to improve it any more.
 
