@@ -285,18 +285,6 @@ def rewrite(ast, callback)
 
 Functions can access their own name in their own body, allowing for recursion, despite the combination of first-class functions, no reference semantics, and lexical scope making it seem like this should not be possible. The compiler and interpreter work together to make sure that there's always an identifier containing the function's description in scope, with the same name as the function is declared with.
 
-Generators can also be fed through for (each) loops.
-
-```gml
-test_state = gentest(10);
-
-// this copies the generatorstate inside of test_state, then repeatedly invokes it
-for(output in test_state)
-    print(output);
-for(output in test_state)
-    print(output);
-```
-
 ### Lambdas
 
 Lambdas are basically the same as user-defined functions, except that they can capture (by value, to specified variable names) and that they don't have an inherent identifier. The identifier used for recursion in lambdas is, therefore, lambda_self.
@@ -453,6 +441,18 @@ Generators truth-test as whether or not they have finalized, allowing you to use
 The "invoke" instruction ticks a generator until its next yield (or return) and produces the yielded or returned value, and if the argument of the "invoke" instruction was a variable, then that variable is updated with the new state of the generator (if it was a non-variable expression then the new generator state is thrown away).
 
 I mentioned this earlier, but generators can be forked just by assigning the value of one variable containing a generator state value to another variable. This copies the generator state value, which includes everything describing the current state of the generator (internally to the interpreter, this description is a function call frame).
+
+Generators can also be fed through for (each) loops.
+
+```gml
+test_state = gentest(10);
+
+// this copies the generatorstate inside of test_state, then repeatedly invokes it
+for(output in test_state)
+    print(output);
+for(output in test_state)
+    print(output);
+```
 
 ## Bindings
 
