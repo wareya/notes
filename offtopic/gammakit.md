@@ -503,7 +503,7 @@ script.gmc:
 
 how grammar.txt differs from the default grammar:
 
-```gml
+```
 statement:
 $blankstatement$
 $statementlist$
