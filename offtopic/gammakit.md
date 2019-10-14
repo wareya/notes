@@ -437,6 +437,48 @@ var myothercode = compile_ast(myotherast);
 myothercode();
 ```
 
+It's also possible to provide your own grammar when parsing a string into an AST.
+
+```gmc
+globaldef reprocess_vn_script(ast)
+{
+    if(ast{isparent})
+    {
+        var max = ast{children}->len();
+        if(ast{text} == "statement" and ast{children}->len() == 1 and ast{children}[0]{text} == "string")
+        {
+            var text = ast{children}[0]{children}[0]{text};
+            var newstatement = parse_text(
+                "{"+
+                "   set_current_line("+text+");"+
+                "   yield;"+
+                "}"
+            );
+            var new_ast = newstatement{children}[0];
+            ast = new_ast;
+        }
+        for(var i = 0; i < max; i += 1)
+        {
+            ast{children}[i] = reprocess_vn_script(ast{children}[i]);
+        }
+    }
+    return ast;
+}
+
+globalvar display_text = "riptide rush tastes like one of those cheap goo-filled or juice-filled grape-like or citrus-like gummy candies that has a very artificial edge when you first taste it but then the aftertaste kicks in and it's just mildly pleasant all around, even on subsequent sips";
+globaldef set_current_line(text)
+{
+    print("running set_current_line");
+    global.display_text = text;
+}
+
+globalvar grammar = file_load_to_string("data/grammar.txt");
+var script = file_load_to_string("data/script.gmc");
+var ast = parse_text_with_grammar(script, global.grammar);
+ast = reprocess_vn_script(ast);
+globalvar script = compile_ast_generator(ast)();
+```
+
 ## Generators
 
 Generators will probably be easiest to explain by example:
