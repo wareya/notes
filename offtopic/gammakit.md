@@ -304,6 +304,23 @@ var countdown = [](x)
 countdown(10);
 ```
 
+```gml
+var mylambda = [x = "hello, world!", y = "adsf"]()
+{
+    print(x);
+    x = "f";
+    print(x);
+    {
+        var x = "hello, nobody!";
+        print(x);
+    }
+};
+mylambda();
+mylambda(); // same every time
+mylambda();
+mylambda();
+```
+
 ### Globals
 
 There are three forms of global identifier in gammakit. The first is global variables, which must be prefixed with `global.` when accessed. The second is bare global variables, which must be assigned upon declaration and cannot be reassigned or mutated, and must additionally have identifiers that begin with an uppercase ascii letter. The third is global functions, which like normal user-defined functions have immutable identifiers, but can be accesse from anywhere without `global.`, unlike global variables, and do not need their first character to be an uppercase ascii letter.
