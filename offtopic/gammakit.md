@@ -2,7 +2,11 @@
 
 Gammakit is a toy programming language I'm making (in an unstable design/development state, possibly permanently) loosely inspired by Game Maker Language (herein "gml") and a couple concepts I picked up from partially reverse engineering cutscene scripting systems used in adventure games.
 
-Gammakit is a lexically scoped, dynamically typed, imperative programming language with support for first-class functions, generators (semicoroutines), and self-modifying code. Variables do not have reference semantics; lambdas can only capture by value. Pointer-like semantics are applied to user-defined object instances, which must be created and freed explicitly by the user with special functions; the assumption is that the programmer sees these as belonging to the "world", rather than any particular chunk of code.
+Gammakit is a lexically scoped, dynamically typed, imperative programming language with support for first-class functions, generators (semicoroutines), and self-modifying code. Variables do not have reference semantics; lambdas can only capture by value.
+
+Pointer-like semantics(*) are applied to instances of user-defined object types, where those instances must be created and freed explicitly by the user with functions dedicated to doing so; the assumption is that the programmer sees instances as belonging to the "world", rather than any particular chunk of code.
+
+(*) as in, you can mutate the same data from multiple places based on a shared bit of stored data, without going through global scope
 
 ## Previous attempts
 
