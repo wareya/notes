@@ -221,6 +221,7 @@ Third of all, each case opens up its own implicit block of scope.
 Switches are an exception to the general rule that flow control facilities in gammakit do not require {}. Switches are a flow control facility that *does* require {}. And what's more, it's recommended to not indent the switch's {}, but rather the cases themselves, because those cases are where new scopes open and close, not the switch's {}.
 
 ```gml
+var x = "test";
 switch (x)
 {
 case 0:
