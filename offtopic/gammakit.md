@@ -124,7 +124,7 @@ Has two basic types of general-purpose operator, as in the kind that you would u
 
 The main binary arithmetic operators (`+`, `-`, `*`, `/`, and `%`) also have binary statement versions (e.g. `x += 5;`).
 
-Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is defined as "n >= 0.5 means true, otherwise means false".
+Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is defined as "n >= 0.5 means true, otherwise means false". Generators truth-test as whether they have finalized. Instance identifiers will truth-test as whether instance still exists in the future; they currently truth-test as true. Everything else currently truth-tests as true; I will probably change this to false, but I'm open to being convinced otherwise, or even to being convinced to make strings, arrays, sets, and dicts truth-test as whether or not they have anything in them, but I do not currently plan to do so.
 
 In addition to the following, gammakit also has a ternary operator, defined syntactically such that each part must be wrapped in parens like `(a) ? (b) : (c)` (todo: male elvis operator compile properly).
 
