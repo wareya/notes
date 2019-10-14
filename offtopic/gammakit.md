@@ -1,4 +1,4 @@
-Regardless of how much it sounds like they're a thought experiment masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/).
+Regardless of how much this article sounds like a thought experiment masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/).
 
 # Gammakit
 
