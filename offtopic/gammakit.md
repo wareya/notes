@@ -123,9 +123,13 @@ Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is 
 * `<=`, `>=`, `<`, `>` : Ordered inequality operations. Operate only on numbers and strings. Defined the same way as the equivalent rust operators. `<` and `>` return false for all other types. `<=` and `>=` return the result of `==` for all other types.
 * `+`, `-`, `*`, `/`, `%` : Arithmetic operations. Operate on numbers. Defined the same way as the equivalent rust operators, EXCEPT for %, which performs euclidean modulo. Random exception: `+` and `*` are defined for strings; `+` performs concatenation between two strings and `*` can be used to repeat a string (left only) a number of times (right only; rounded down to an integer).
 
+Binary operator precedence, among all other precedence-related things, is defined declaratively in gammakit's grammar: https://github.com/wareya/gammakit/blob/22006a9ea3b1b6d6b91f180b66fb684c661243b9/src/defaultgrammar.txt#L106
+
+(The binary operators are defined as right-recursive in the grammar, but they are rotated to be left-recursive in the final AST.)
+
 ##### Unary (prefix)
 
-The only operators are `+` (positive; does nothing to numbers; throws an error for all other types), `-` (negative; flips the sign of a number; throws an error for all other types), and `!` (logical negation; truth-tests an expression, then evaluates to the opposite of that truthiness).
+The only unary operations are `+` (positive; does nothing to numbers; throws an error for all other types), `-` (negative; flips the sign of a number; throws an error for all other types), and `!` (logical negation; truth-tests an expression, then evaluates to the opposite of that truthiness). Unary operations are placed to the left of the expression they modify.
 
 ### Statements
 
