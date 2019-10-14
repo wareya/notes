@@ -77,11 +77,63 @@ The second thing it requires is generators or semicoroutines. This is so that "y
 
 ## The basics of gammakit
 
+Game maker is fundamentally a vaguely-C-like imperative language, despite how little it actually has in common with real C. It has the same basic kind of control flow
+
+### Types and scope
+
+Gammakit is lexically scoped and dynamically typed. A few things stick out, though: compilation is (currently) single-pass, so functions can't access global variables declared below them, and functions can't access the lexical scope they're defined in (more on this later). Object types also cannot be accessed before they are declared, though this is less of a problem than it is in C/C++ because all instances have the same type, "instance" (more on this later).
+
+The rudimentary types in gammakit are:
+
+* Number (f64)
+* String
+* Array
+* Dict
+* Set
+* Function (binding or user-defined)
+* Generator state
+* Instance (carries pointer-like semantics)
+* Object
+* Custom (not used by gammakit itself; available for parent application bindings to pass data into and out from gammakit)
+
+There's also a hidden non-assignable type dedicated to temporarily holding data concerning "arrow bindings" (more on these later, again). This might be considered an implementation detail. Attempting to assign the value of an arrow binding (rather than the result of calling it) to a variable, even indirectly (such as through a function call or by inserting it into an array/dict), is unsupported behavior (the interpreter currently throws an error if you try doing so).
+
+True and false are represented by the numbers 1.0 and 0.0.
+
+Dicts can only have numbers or strings as keys. Sets can only have numbers as keys.
+
+Any variable can hold a value of any assignable type.
+
+Once again, gammakit does not have variable-level reference semantics. In order to access a variable from multiple places, it must be stored in an instance.
+
+Coming off of the lack of reference semantics once again, when a generator state value is assigned to a new variable, it is *completely cloned*. This means that you can fork generators mid-execution (especially because you can "tick" generators a single yield at a time). If you want to access the same generator from multiple places, it must be placed inside of an instance.
+
+#### Operators
+
+Has two basic types of general-purpose operator, as in the kind that you would use for numerical things.
+
+The main binary arithmetic operators (`+`, `-`, `*`, `/`, and `%`) also have binary statement versions (e.g. `x += 5;`).
+
+Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is defined as "n >= 0.5 means true, otherwise means false".
+
+##### Binary
+
+* `&&`/`and`, `||`/`or` : Basic boolean "and" and "or". Operate on the truthiness of numerical experssions. Have short-circuiting semantics. There are no other short-circuiting semantics anywhere in gammakit. The preferred representations are `and` and `or`, not `&&` and `||`, though both are supported.
+* `==`, `!=` : Equality and inequality operations. Operate meaningfully on numbers, strings, arrays, dicts, sets, functions, instances, and "custom" values. All other types return "false" for equality, and "true" for inequality. Number equality is defined in exactly the same way as rust's `==` operator on two f64 values. String equality is defined in exactly the same way as rust's `==` operator on two &str values. Array equality is defined trivially. Dict equality is defined based on containing the same mappings; insertion order does not matter. Same with sets, except with values, not mappings.
+* `<=`, `>=`, `<`, `>` : Ordered inequality operations. Operate only on numbers and strings. Defined the same way as the equivalent rust operators. `<` and `>` return false for all other types. `<=` and `>=` return the result of `==` for all other types.
+* `+`, `-`, `*`, `/`, `%` : Arithmetic operations. Operate on numbers. Defined the same way as the equivalent rust operators, EXCEPT for %, which performs euclidean modulo. Random exception: `+` and `*` are defined for strings; `+` performs concatenation between two strings and `*` can be used to repeat a string (left only) a number of times (right only; rounded down to an integer).
+
+##### Unary (prefix)
+
+The only operators are `+` (positive; does nothing to numbers; throws an error for all other types), `-` (negative; flips the sign of a number; throws an error for all other types), and `!` (logical negation; truth-tests an expression, then evaluates to the opposite of that truthiness).
+
+### Statements
+
 TODO
 
-### Types
-
 ### Control flow
+
+Gammakit has high level control flow, just like any sane programming language.
 
 #### If and else
 
@@ -113,6 +165,8 @@ Unfortunately, gammakit does not have a "goto". I couldn't figure out how to mak
 
 ## Bindings
 
+### Arrow bindings
+
 ## Embedding
 
 The primary usage scenario for gammakit is being embedded inside of game engines. As a result, gammakit's built-in suite of bindings is quite limited. The only IO mechanism provided is printing to the console.
@@ -122,3 +176,5 @@ Gammakit is designed as a library where the parent application can create and ru
 Gammakit suspiciously lacks a module system. Instead of having modules and having them jump from one to the other, gammakit's interpreter can have new code loaded into it arbitrarily. This is how magmakit's framerate limiter and input updates work. Rather than being called on in gammakit itself, they silently happen between drawing and stepping, in a loop.
 
 But the embedding application can go about this in any way that it wants, such as having a binding that cycles the rendering system, a binding that cycles the framerate limiter, and a binding that cycles OS input updates, calling them at the tail end of a single massive while() loop. The point being that the embedding application can do whatever it wants; different approaches make sense for different applications, either for design reasons or because of library/OS constraints.
+
+The parent application also has the ability to construct arbitrary "custom" values consisting of two u64s. The first u64 is assumed to be an arbitrary "type" indicator, and the second is assumed to be an arbitrary "opaque pointer" to some information of the type indicated by the first u64. Gammakit might make it possible to compare whether two "custom" values are of the same "type" in the future, and it's already possible to test whether they're exactly the same, but the "custom" type is not compatible with ordered inequality operations, or indeed any operations other than == and != in general.
