@@ -126,7 +126,7 @@ The main binary arithmetic operators (`+`, `-`, `*`, `/`, and `%`) also have bin
 
 Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is defined as "n >= 0.5 means true, otherwise means false".
 
-In addition to the following, gammakit also has a ternary operator, defined syntactically such that each part must be wrapped in parens like `(a) ? (b) : (c)`.
+In addition to the following, gammakit also has a ternary operator, defined syntactically such that each part must be wrapped in parens like `(a) ? (b) : (c)` (todo: male elvis operator compile properly).
 
 ##### Binary
 
