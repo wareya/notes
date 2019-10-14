@@ -374,6 +374,8 @@ for(var i = 0; i < 20; i++)
 
 Gammakit provides functions for parsing text into an AST and compiling an AST into a function value (like a lambda). You can also provide your own grammar when parsing text into an AST, if you want to. I *might* add facilities for grabbing the ASTs of the current "file", or specific functions, parts of the program, but this is only a possibility.
 
+The ASTs are themselves just nested dicts and arrays.
+
 ```gml
 var myf = compile_text("print(\"test\");");
 myf();
