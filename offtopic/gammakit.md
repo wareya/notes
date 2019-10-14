@@ -32,7 +32,7 @@ The first way of implementing these was way back when lexical scope was emulated
 
 I eventually realized that this was a bad idea and slow, and (before moving to static, compile-time lexical scope) made variable accesses return an Rc<RefCell<...>> to a value. (In reality, it was a struct, so that there could be read-only and non-reference states, to support read-only identifiers.)
 
-Much later, concerned by the probably performance overhead of using RefCell, I moved to a way of returning references that utilized lifetimes to keep track of reference lifetime instead. It took a while to get working, but it works quite well, and I can't see any obvious ways to improve it any more.
+Much later, concerned by the probable performance overhead of using RefCell, I moved to a way of returning references that utilized lifetimes to keep track of reference lifetime instead. It took a while to get working, but it works quite well, and I can't see any obvious ways to improve it any more.
 
 ## Basic design ideas
 
