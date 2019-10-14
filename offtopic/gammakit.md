@@ -440,23 +440,31 @@ myothercode();
 It's also possible to provide your own grammar when parsing a string into an AST.
 
 ```gml
+// function that takes an AST with a different grammar than gammaikt expects, and replaces the nonstandard parts of it with new standard parts that do something similar
 globaldef reprocess_vn_script(ast)
 {
     if(ast{isparent})
     {
         var max = ast{children}->len();
+        // this AST node follows our nonstandard extension to the gammakit grammar
         if(ast{text} == "statement" and ast{children}->len() == 1 and ast{children}[0]{text} == "string")
         {
+            // the string we want to replace the onscreen text with, pulled from the AST
             var text = ast{children}[0]{children}[0]{text};
+            // build a new statement block to replace the string in the AST with (using the standard parser because we don't care about our extension anymore)
+            // in gammakit's grammar, blocks like this are basically just ordinary statements of their own
             var newstatement = parse_text(
                 "{"+
-                "   set_current_line("+text+");"+
+                "   set_current_line("+text+");"+ // a global function that modifies global state
                 "   yield;"+
                 "}"
             );
+            // the root node of a parsed bit of gammakit text as spit out by parse_text is always "program". we want a "statement" instead
             var new_ast = newstatement{children}[0];
+            // replace current nonstandard statement AST node with a standard one
             ast = new_ast;
         }
+        // apply this function to all children
         for(var i = 0; i < max; i += 1)
         {
             ast{children}[i] = reprocess_vn_script(ast{children}[i]);
@@ -465,17 +473,24 @@ globaldef reprocess_vn_script(ast)
     return ast;
 }
 
+// text that we display on the screen somewhere else
 globalvar display_text = "riptide rush tastes like one of those cheap goo-filled or juice-filled grape-like or citrus-like gummy candies that has a very artificial edge when you first taste it but then the aftertaste kicks in and it's just mildly pleasant all around, even on subsequent sips";
+// global function that modifies the onscreen text
 globaldef set_current_line(text)
 {
     print("running set_current_line");
     global.display_text = text;
 }
 
+// load our customized grammar into a string
 globalvar grammar = file_load_to_string("data/grammar.txt");
+// load our script with nonstandard grammar into a string
 var script = file_load_to_string("data/script.gmc");
+// parse the script with the custom grammar
 var ast = parse_text_with_grammar(script, global.grammar);
+// process the AST to be standard gammakit
 ast = reprocess_vn_script(ast);
+// compile it into a generator that we invoke elsewhere to update the text on screen
 globalvar script = compile_ast_generator(ast)();
 ```
 
