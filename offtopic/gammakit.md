@@ -79,6 +79,24 @@ TODO
 
 ### Types
 
+### Control flow
+
+#### If and else
+
+#### While
+
+#### For
+
+#### For (each)
+
+#### Switch (but not your uncle's switch)
+
+#### With
+
+#### Goto
+
+Unfortunately, gammakit does not have a "goto". I couldn't figure out how to make it work cleanly and safely. I hope that having generators and first-class functions makes up for not having it.
+
 ### User-defined functions
 
 ### Lambdas
