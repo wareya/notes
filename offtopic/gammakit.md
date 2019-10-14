@@ -222,6 +222,13 @@ Switches are an exception to the general rule that flow control facilities in ga
 
 ```gml
 var x = "test";
+
+def randomtestfunction()
+{
+    print("this won't run!");
+    return 2;
+}
+
 switch (x)
 {
 case 0:
