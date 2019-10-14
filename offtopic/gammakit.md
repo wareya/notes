@@ -395,6 +395,8 @@ for(var i = 0; i < 20; i++)
     make_tile(i,5-floor(i/4));
 ```
 
+Gammakit does not currently have anything resembling inheritance or traits. If stuffing things inside of dicts and passing lambdas or function values around into instances isn't good enough, something resembling inheritance or traits might be added in the future, but I'm still trying to wrap my head around the right way to handle it.
+
 ## Code generation
 
 Gammakit provides functions for parsing text into an AST and compiling an AST into a function value (like a lambda). You can also provide your own grammar when parsing text into an AST, if you want to. I *might* add facilities for grabbing the ASTs of the current "file", or specific functions, parts of the program, but this is only a possibility.
