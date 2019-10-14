@@ -110,7 +110,7 @@ Once again, gammakit does not have variable-level reference semantics. In order 
 
 Coming off of the lack of reference semantics once again, when a generator state value is assigned to a new variable, it is *completely cloned*. This means that you can fork generators mid-execution (especially because you can "tick" generators a single yield at a time). If you want to access the same generator from multiple places, it must be placed inside of an instance.
 
-While we're here, gammakit also has array, set, and dict literals, unlike old version of gml:
+While we're here, gammakit also has array, set, and dict literals, unlike old versions of gml:
 
 ```gml
 var test_array = ["asdf", 0, ["test", 0]];
