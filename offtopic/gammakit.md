@@ -76,3 +76,29 @@ The second thing it requires is generators or semicoroutines. This is so that "y
 ## The basics of gammakit
 
 TODO
+
+### Types
+
+### User-defined functions
+
+### Lambdas
+
+### Globals
+
+## Objects and instances
+
+## Code generation
+
+## Generators
+
+## Bindings
+
+## Embedding
+
+The primary usage scenario for gammakit is being embedded inside of game engines. As a result, gammakit's built-in suite of bindings is quite limited. The only IO mechanism provided is printing to the console.
+
+Gammakit is designed as a library where the parent application can create and run any number of interpreters in any way that it wants, even going as far as being able to step them instruction-by-instruction. It's also possible to insert your own bindings (obviously) as lambdas that carry in, for example, mutable smart pointers or mutexes, so that bindings can Do Things. This is exactly what the toy game engine "magmakit" does, providing things like a window, keyboard/mouse input, and basic 2d rendering.
+
+Gammakit suspiciously lacks a module system. Instead of having modules and having them jump from one to the other, gammakit's interpreter can have new code loaded into it arbitrarily. This is how magmakit's framerate limiter and input updates work. Rather than being called on in gammakit itself, they silently happen between drawing and stepping, in a loop.
+
+But the embedding application can go about this in any way that it wants, such as having a binding that cycles the rendering system, a binding that cycles the framerate limiter, and a binding that cycles OS input updates, calling them at the tail end of a single massive while() loop. The point being that the embedding application can do whatever it wants; different approaches make sense for different applications, either for design reasons or because of library/OS constraints.
