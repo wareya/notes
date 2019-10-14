@@ -488,7 +488,7 @@ xaa->replace_char(1, "Ｙ");
 print(xaa);
 ```
 
-One of the points of arrow bindings is that they do not copy the value out from inside of the variable they're called on if called on a variable (they work on expressions too); this means that it is not useful to be able to declare new arrow functions from inside of gammakit code, because gammakit does not have variable-level reference semantics, and arrow functions declared inside of gammakit code would not be able to give the same guarantee. This is important when, for example, calling an arrow function on a massive array. As such, it is not possible to declare arrow functions from inside gammakit code. You should use an instance and a method on it instead.
+One of the points of arrow bindings is that they do not copy the value out from inside of the variable they're called on if called on a variable (they work on expressions too); this means that it is not useful to be able to declare new arrow bindings from inside of gammakit code, because gammakit does not have variable-level reference semantics, and arrow bindings declared inside of gammakit code would not be able to give the same guarantee. This is important when, for example, calling an arrow bindings on a massive array. As such, it is not possible to declare arrow bindings from inside gammakit code. You should use an instance and a method on it instead.
 
 ## Embedding
 
