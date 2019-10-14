@@ -36,8 +36,37 @@ The first way of implementing these was way back when lexical scope was emulated
 
 I eventually realized that this was a bad idea and slow, and (before moving to static, compile-time lexical scope) made variable accesses return an Rc<RefCell<...>> to a value. (In reality, it was a struct, so that there could be read-only and non-reference states, to support read-only identifiers and also using the same type for certain non-variable-related aspects of how the interpreter handles values.)
 
-Much later, concerned by the probable performance overhead of using RefCell, I moved to a way of returning references that utilized lifetimes to keep track of reference lifetime instead. It took a while to get working, but it works quite well, and I can't see any obvious ways to improve it any more.
+Much later, concerned by the probable performance overhead of using RefCell, I moved to a way of returning references that utilized lifetimes to keep track of reference lifetime instead of smart pointers. It took a while to get working, but it works quite well, and I can't see any obvious ways to improve it any more.
 
 ## Basic design ideas
 
-TODO
+Gammakit is highly restrained by being, basically, a eulogy to gml. GML is basically a "bad" programming language, but it's bad in ways that are good for game logic programming, to a limited degree.
+
+First of all, in gml, there are no reference semantics (except for instances), and memory management is entirely automatic (once again except for instances), which eliminates multiple whole entire classes of gotcha!s that most programming languages have when non-programmers copy-paste cruddy logic together in them.
+
+Second of all, in gml, there's an interesting quirk to the way scope works. Rather than having lexical or dynamic scope, variables can either belong to a "script" or to an "instance". This is actually bad and confusing (you can't have a script variable in one block, while referencing an instance variable in an unrelated block somewhere else in the same script), but it's similar to how C++ class/struct methods can access their object's variables without any prefixing (though prefixing is still possible). This makes it less verbose to do things like "add this gravity constant to my vspeed variable every frame", so new game logic programmers don't have to go through the process of learning that they need to prefix object attributes with "this." or "self." to use them. This is, admittedly, very minor, but it becomes more interesting with the following ponit.
+
+Third of all, gml has "with". "with" is, in one way, similar to the maligned javascript "with". The first difference is that it's less bad, because gml doesn't throw object variables into the same identifier pool as the metadata that describes how objects work (also: not having variable-level reference semantics). The second difference is that **gml's "with" is a loop**. The following code loops over all extant instances of the object "Character" and decreases their hp variable (if they have one (they do; it's an implied object variable in gml)) by 10:
+
+```gml
+with(Character)
+{
+    hp -= 10;
+}
+```
+
+That's right, gml stores lists of every instance that exists of every type and makes it possible to just iterate through them all. If scripting languages are all about syntactical sugar, this is basically a game logic programmer's monkfruit. Imagine being able to just go, okay, for this platforming level's gimmicky trap let's just take EVERY SINGLE BULLET THAT EXISTS IN THE ENTIRE GAME WORLD and just point them directly at the player character. No need to add a new list of bullet instances anywhere or search through component tags or fuss around with object data visibility or add a new method, I just write a couple lines of code and go ```direction = point_direction(x, y, global.myself.x, global.myself.y);``` in the middle of it". (gml also has a few special variables that invoke special hidden functionality when modified; the "speed" and "direction" variables modify the "hspeed" and "vspeed" variables when modified. Gammakit does not attempt to provide this sort of functionality.)
+
+These three design ideas - no reference semantics, implicit access of instance scope (in code defined under them), and 'with' as a loop (and also a provider of implicit access of instance scope) - provide the basic compass for Gammakit design direction.
+
+There's one more design idea I want to specify: the desire to write things like cutscenes or AI scripts in an arbitrarily modified version of the normal game logic programming language.
+
+This requires two things.
+
+The first is runtime code generation/modification. The motivation for this is having "special game logic things" interspersed with normal code, like "take this unit, make them walk over there. yield execution to the rest of the game until they get there,  then come back to me", but without being that verbose. If the game logic programmer can provide a modified version of the gammakit grammar to a parsing function, they can add arbitrary forms of statements that best suit what they want to do with their "special game logic things". A cutscene designer could add a statement type that just consists of a single screen, indicating that there's a change in the onscreen text, which then yields to the rest of the game for a while, etc. rather than doing it manually.
+
+And code generation might as well be dynamic, given that I'm designing a primarily interpreted programming language.
+
+The second thing it requires is generators or semicoroutines. This is so that "yield execution to the rest of the game" makes conceptual sense. You can do things like that systems languages like C using threads (in fact, misusing threads (i.e. no multicore safety) in the process of doing this resulted in compatibility problems for early PC games running on modern multicore hardware), but gammakit is *strictly* single-threaded, so this is not an option. Additionally, gammakit's semantics and interpreter also do not work in a way where interrupts (the things that make "reentrancy" important in C) make conceptual sense. Finally, implementing some sort of asynchronous execution system would basically be a *more difficult and less fitting* version of implementing generators/semicoroutines, so I just went with implementing generators/semicoroutines.
+
+## The basics of gammakit
