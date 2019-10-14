@@ -26,7 +26,7 @@ First of all, the way strings were packed into the bytecode made it necessary to
 
 This wasn't a good enough speed increase, so I ended up scrapping the lexical scope emulation and made it so that the compiler and interpreter have a model where "function call frames have a stack of variables" and "references to variables just say where on the variable stack the variable is". This is not to be confused with the evaluation stack, which is what normal expression evaluations etc. work off of (rather than registers). This is much cleaner than having a stack of scopes at runtime anyway. Rest in peace, subroutine-like functions. You will be missed. Unironically.
 
-(I have ideas about, basically, reimplementing subroutine-like functions by "monomorphizing" variable visibility information at compile time, but this requires that the compiler be aware of the value of the subroutine-like function's identifier at compile time, so for sanity's sake I would have to make them be global in some way. I haven't decided what to do with this idea yet.)
+(I have ideas about, basically, reimplementing subroutine-like functions by doing the equivalent of "monomorphizing" for them at compile time, but for variable visibility information, rather than for type information; but this requires that the compiler be aware of the value of the subroutine-like function's identifier at compile time, so for sanity's sake I would have to make them be global in some way. I haven't decided what to do with this idea yet.)
 
 ## Design hiccups part two
 
