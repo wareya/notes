@@ -42,6 +42,8 @@ Much later, concerned by the probable performance overhead of using RefCell, I m
 
 Gammakit is highly restrained by being, basically, a eulogy to gml. GML is basically a "bad" programming language, but it's bad in ways that are good for game logic programming, to a limited degree.
 
+### Thanks, gml
+
 First of all, in gml, there are no reference semantics (except for instances), and memory management is entirely automatic (once again except for instances), which eliminates multiple whole entire classes of gotcha!s that most programming languages have when non-programmers copy-paste cruddy logic together in them.
 
 Second of all, in gml, there's an interesting quirk to the way scope works. Rather than having lexical or dynamic scope, variables can either belong to a "script" or to an "instance". This is actually bad and confusing (you can't have a script variable in one block, while referencing an instance variable in an unrelated block somewhere else in the same script), but it's similar to how C++ class/struct methods can access their object's variables without any prefixing (though prefixing is still possible). This makes it less verbose to do things like "add this gravity constant to my vspeed variable every frame", so new game logic programmers don't have to go through the process of learning that they need to prefix object attributes with "this." or "self." to use them. This is, admittedly, very minor, but it becomes more interesting with the following ponit.
@@ -59,6 +61,8 @@ That's right, gml stores lists of every instance that exists of every type and m
 
 These three design ideas - no reference semantics, implicit access of instance scope (in code defined under them), and 'with' as a loop (and also a provider of implicit access of instance scope) - provide the basic compass for Gammakit design direction.
 
+### Making cutscene scripting painless
+
 There's one more design idea I want to specify: the desire to write things like cutscenes or AI scripts in an arbitrarily modified version of the normal game logic programming language.
 
 This requires two things.
@@ -70,3 +74,5 @@ And code generation might as well be dynamic, given that I'm designing a primari
 The second thing it requires is generators or semicoroutines. This is so that "yield execution to the rest of the game" makes conceptual sense. You can do things like that systems languages like C using threads (in fact, misusing threads (i.e. no multicore safety) in the process of doing this resulted in compatibility problems for early PC games running on modern multicore hardware), but gammakit is *strictly* single-threaded, so this is not an option. Additionally, gammakit's semantics and interpreter also do not work in a way where interrupts (the things that make "reentrancy" important in C) make conceptual sense. Finally, implementing some sort of asynchronous execution system would basically be a *more difficult and less fitting* version of implementing generators/semicoroutines, so I just went with implementing generators/semicoroutines.
 
 ## The basics of gammakit
+
+TODO
