@@ -525,6 +525,8 @@ $invocation_call$ ;
 ---> $string$ ; (this is added to data/rgammar.txt and doesn't exist in the default grammar)
 ```
 
+Trailing semicolons are removed from "statement" AST tokens as part of the process of turning the parse tree into a syntax tree (among a few other simplifications elsewhere like unwrapping trivial expressions), meaning that `"string" ;` looks like `"string"` after parsing, so the length test in the earlier code is `ast{children}->len() == 1` rather than `ast{children}->len() == 2`.
+
 ## Generators
 
 Generators will probably be easiest to explain by example:
