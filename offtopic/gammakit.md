@@ -79,7 +79,7 @@ The second thing it requires is generators or semicoroutines. This is so that "y
 
 ## The basics of gammakit
 
-Game maker is fundamentally a vaguely-C-like imperative language, despite how little it actually has in common with real C. It has the same basic kind of control flow
+Gammakit is fundamentally a vaguely-C-like imperative language, despite how little it actually has in common with real C. It has the same basic kind of control flow
 
 ### Types and scope
 
