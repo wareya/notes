@@ -1,5 +1,7 @@
 Regardless of how much this article sounds like a thought experiment masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/).
 
+This article is incomplete; I am in the process of writing it.
+
 # Gammakit
 
 Gammakit is a toy programming language I'm making (in an unstable design/development state, possibly permanently) loosely inspired by Game Maker Language (herein "gml") and a couple concepts I picked up from partially reverse engineering cutscene scripting systems used in adventure games.
@@ -108,6 +110,14 @@ Once again, gammakit does not have variable-level reference semantics. In order 
 
 Coming off of the lack of reference semantics once again, when a generator state value is assigned to a new variable, it is *completely cloned*. This means that you can fork generators mid-execution (especially because you can "tick" generators a single yield at a time). If you want to access the same generator from multiple places, it must be placed inside of an instance.
 
+While we're here, gammakit also has array, set, and dict literals, unlike old version of gml:
+
+```
+var test_array = ["asdf", 0, ["test", 0]];
+var test_dict = {"asdf" : 1, 0 : "a"};
+var test_set = set {"asdf", 0};
+```
+
 #### Operators
 
 Has two basic types of general-purpose operator, as in the kind that you would use for numerical things.
@@ -125,7 +135,7 @@ Warning: a huge gotcha! that's held over from gml: the truthiness of numbers is 
 
 Binary operator precedence, among all other precedence-related things, is defined declaratively in gammakit's grammar: https://github.com/wareya/gammakit/blob/22006a9ea3b1b6d6b91f180b66fb684c661243b9/src/defaultgrammar.txt#L106
 
-(The binary operators are defined as right-recursive in the grammar, but they are rotated to be left-recursive in the final AST.)
+(The binary operators are defined as right-recursive in the grammar, but they are rotated to be left-recursive in the final AST. They have left-recursive semantics.)
 
 ##### Unary (prefix)
 
@@ -133,21 +143,72 @@ The only unary operations are `+` (positive; does nothing to numbers; throws an 
 
 ### Statements
 
-TODO
+"Statement" is a loaded term. Most language constructs are statements. If they're not, they're expressions. Or part of an expression. At least in the imperative world that gammakit inhabits.
+
+Variable declarations are statements. Variables can be declared anywhere, and you can declare multiple variables on the same line, and set their values. This does not work the same way as it does in C. Each variable gets a unique value, like so:
+
+`var x = 10, y = 3, name = "fighter";`
+
+If a variable does not have a value assigned to it upon declaration, it contains the number 0.0.
+
+Variables can be reassigned in the following ways:
+
+```
+x = 10;
+x += 10; // and the other arithmetic operations
+x++; // equivalent to x += 1;
+x--; // equivalent to x -= 1;
+```
+
+Yes, gammakit has ++ and -- statements. No, they are not expressions, and this means that there's no weird behavioral ordering nastiness going on. These special statements exist to make it so that C programmers don't have to bother themselves with `+= 1` and `-= 1` when writing manual for loops.
+
+There are a few more ways for variables to change value. These include arrow functions (more on that later) and invoking a generator (once again, more on that later).
+
+Statements can be grouped into blocks with {}, which create a new bubble of lexical scope. Variables can be declared absolutely anywhere within a block, but are only visible below their declaration, and until the block they were declared in closes.
 
 ### Control flow
 
-Gammakit has high level control flow, just like any sane programming language.
+Gammakit has high level control flow, just like any sane programming language, and this is a list of which high level control flow constructs it has. Control flow mechanisms generally do not require {} around their inner blocks like they do in rust. However, even if there is no {}, it's still a "block" with its own bubble of lexical scope.
 
-#### If and else
+#### If, else, while
 
-#### While
+Self explanatory. Break and continue work properly for while loops, too.
 
-#### For
+#### For (manual)
+
+These compile down to while loops with a bit of a prelude. Yes, initialization and scope and break and continue are handled correctly and interact with the initialization and loop statement and conditional properly and everything executes in the same order it executes in in C. Each part of the header (init, cond, loop) can be elided, just like in C. Eliding the cond makes it always evaluate to true, just like in C.
+
+One fun thing that gammakit borrows from game maker is that the "init" and "loop" elements of the header can be *entire blocks*, like so:
+
+```
+for(var j = 0; j < 10; {j += 1;})
+{
+    if(j == 4)
+        continue;
+    print(j);
+    if(j == 8)
+        break;
+}
+```
+
+The "var j = 0;" expression could be a block too, but this would not be useful unless j were already declared outside of the for loop and you wanted to confuse somebody.
 
 #### For (each)
 
+Foreach loops look like this:
+
+```
+for(thing in test_array)
+    print(thing);
+```
+
+where "thing" is implicitly declared and assigned at the header of the loop as being the next element of test_array on each iteration. Foreach loops also work on dicts and sets, but the iteration order is currently undefined (in the future, it will be defined based on insertion order).
+
+Foreach loops also work on generators, but more on that later.
+
 #### Switch (but not your uncle's switch)
+
+Switch statements are superficially similar to the switch statements from C, but their design deviates signfiicantly.
 
 #### With
 
