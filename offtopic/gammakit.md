@@ -285,6 +285,18 @@ def rewrite(ast, callback)
 
 Functions can access their own name in their own body, allowing for recursion, despite the combination of first-class functions, no reference semantics, and lexical scope making it seem like this should not be possible. The compiler and interpreter work together to make sure that there's always an identifier containing the function's description in scope, with the same name as the function is declared with.
 
+Generators can also be fed through for (each) loops.
+
+```gml
+test_state = gentest(10);
+
+// this copies the generatorstate inside of test_state, then repeatedly invokes it
+for(output in test_state)
+    print(output);
+for(output in test_state)
+    print(output);
+```
+
 ### Lambdas
 
 Lambdas are basically the same as user-defined functions, except that they can capture (by value, to specified variable names) and that they don't have an inherent identifier. The identifier used for recursion in lambdas is, therefore, lambda_self.
