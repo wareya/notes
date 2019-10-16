@@ -363,7 +363,7 @@ bare globalvar MyChar = instance_create(Character);
 
 ## Objects and instances
 
-Objects have a set of variables and methods which are specified in-place when the object is declared. These can be accessed through an instance identifier with the . operator (which was excluded from the normal binary operators because it does not parse the same way and does not work in a remotely similar way in the compiler either), and for variables, mutated as well.
+Objects have a set of variables and methods which are specified in-place when the object is declared. Variables and methods can be accessed through an instance identifier with the `.` operator, and variables can be muted as well. The `.` operator is similar to a hashmap access in that you can attempt to access parts of an object that don't exist, and doing so will throw an error. This would not be the case if gammakit was statically typed.
 
 ```gml
 obj Tile {
