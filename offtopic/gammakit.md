@@ -1,4 +1,4 @@
-Regardless of how much this article sounds like a thought experiment or piece of satire masquerading as a design retrospective, the projects described in this article *actually exist*, and this article is not fiction or comedy. [Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/). I am not an academic and I have not studied programming language design formally. I just did this for fun.
+[Gammakit](https://github.com/wareya/gammakit/) and [magmakit](https://github.com/wareya/magmakit/) are serious projects that actually work, despite being toys and having a few parts that sound like downright trollbait or satire. I am not an academic and I have not studied programming language design formally. I just did this for fun.
 
 This article is mostly done, but has not been edited, and might be missing parts I forgot about. Gammakit is also in a state of design flux, so this article might change dramatically or fall slightly out of date (though I will do my best to keep it in sync with gammakit's current development status).
 
