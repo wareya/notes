@@ -63,7 +63,7 @@ Kanjidamage has similar problems, worsened by how goofy it tries to be.
 
 Only two or three of the readings here are worth knowing in isolation, and they're readings you're going to pick up very quickly as you learn common words.
 
-In fact, kun'yomi are really just Japanese Words, which exist entirely independently of kanji, with their own entirely independent meanings and nuances, that just happen to be written with those kanji beacuse of convention and because the meaning somewhat matches.
+In fact, kun'yomi are really just Japanese Words, which exist entirely independently of kanji, with their own entirely independent meanings and nuances, that just happen to be written with those kanji because of convention and because the meaning somewhat matches.
 
 Not knowing this means being scared away by the prospect of having to memorize a dozen random readings with no rhyme or reason to what's going on.
 
@@ -71,7 +71,7 @@ Not knowing this means being scared away by the prospect of having to memorize a
 
 This is often cited by early isolated kanji study diehards as the #1 reason to go through with it.
 
-I just don't see it. Sure, when I started out I had a hard time visually breaking kanji down into their parts too, but that problem went away on its own as I kept learning new words, learning about radicals (the dictionary things), seeing stroke order diagrams (never even doing writing practice by hand), noticing kanji lodged inside of other kanji, and reading about the history of how random kanji came to look how they look today.
+I just don't see it. Sure, when I started out I had a hard time visually breaking kanji down into their parts too, but that problem went away on its own as I kept learning new words, learning about radicals (the dictionary things), seeing stroke order diagrams (not even doing writing practice by hand), noticing kanji lodged inside of other kanji, and reading about the history of how random kanji came to look how they look today.
 
 I also did indeed have a hard time telling similar-ish kanji apart way back when I was a beginner, even confusing things like 持 with 待 and 拾 with 捨.
 
