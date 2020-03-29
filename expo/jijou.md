@@ -41,3 +41,5 @@ This nuance extends to various similar phrases, and 事情 can be modified. For 
 >【ティアラ】「ファングさんいけませんわ。きっと**深い事情があります**のよ」
 >
 > *(comprehension left to reader)*
+
+One should take note that the connotations behind 事情がある are not necessarily negative. For a similar, but unambiguously "negative" expression, see 訳あり, which focuses on defects (of objects) or baggage (of people). (These two expressions are not *that similar*, but can be unintuitive in the same way.)
