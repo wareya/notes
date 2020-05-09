@@ -53,6 +53,19 @@ Until very, very, very recently, Remembering The Kanji was full of tons and tons
 
 The fact that this is now considered errata by RTK's author or publisher does nothing to undo the damage that this has caused. It's also a caught-red-handed example of how people with (at the time) very poor Japanese ability get away with creating and selling learning resources targeted at beginners that are not only very time-consuming but also riddled with obvious mistakes. Just one would be okay; you can move on from that; but spending three months memorizing that 町 means "village" and 村 means "town" is going to leave you with damage that takes a ***long*** time to wash away.
 
+Before you say "but RTK isn't teaching you meanings, it's teaching you keywords!", this is literally the first sentence of the introduction of the sixth edition:
+
+> The aim of this book is to provide the student of Japanese with a simple method for correlating the writing and the meaning of Japanese characters in such a way as to make them both easy to remember.
+
+And it just gets worse from there:
+
+> Each kanji is assigned a key word that represents its basic meaning, or one of its basic meanings. The key words have been selected on the basis of how a given kanji is used in compounds and on the meaning it has on its own.
+  
+> That having been said, the goal of this book is still to attain native proficiency in writing the
+Japanese characters and associating their meanings with their forms.
+
+RTK goes out of its way to defend a close relation between its keywords and what kanji supposedly mean. There's no way out of mixing up 町 and 村.
+
 (RTK's author has since, long after creating RTK, gone on to develop a very high level of proficiency in Japanese, working with it in an academic capacity. RTK should be considered a Dark Past, not a representation of his Japanese ability in the present day.)
 
 Kanjidamage has similar problems, worsened by how goofy it tries to be.
