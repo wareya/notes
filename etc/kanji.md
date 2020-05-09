@@ -64,7 +64,7 @@ And it just gets worse from there:
 > That having been said, the goal of this book is still to attain native proficiency in writing the
 Japanese characters and associating their meanings with their forms.
 
-RTK goes out of its way to defend a close relation between its keywords and what kanji supposedly mean. There's no way out of mixing up 町 and 村.
+RTK goes out of its way to defend a close relation between its keywords and what kanji supposedly mean. There's no way out of mixing up 町 and 村. Even supposing that RTK was indeed teaching arbitrary keywords with no intent to associate them with the kanji's meaning, taking two kanji's meanings and *swapping them* and *using the swapped meanings as keywords* should be inherently indefensible, as there is no benefit to doing so and can only cause confusion.
 
 (RTK's author has since, long after creating RTK, gone on to develop a very high level of proficiency in Japanese, working with it in an academic capacity. RTK should be considered a Dark Past, not a representation of his Japanese ability in the present day.)
 
