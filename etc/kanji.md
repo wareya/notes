@@ -33,7 +33,7 @@ This is not to say that learning how Kanji are used is not useful, just that the
 
 I have been learning Japanese for five years. I know the overwhelming majority of the Joyo kanji quite well. If I see a made-up word that I'm pretty sure is read with on'yomi, I have a very good chance of reading it and guessing its meaning correctly.
 
-The other day I misread 平等 despite knowing both of the kanji in it ***very, very well*** for no reason other than that I have not seen 平等 often enough for my brain to decide to recognize it as its own entity and that, among very commong words, 平 is read as へい far more than as ひょう or びょう. In fact, among daily-use vocabulary, 平等 can be considered the only important word where へい is *not* how 平 is read.
+The other day I misread 平等 despite knowing both of the kanji in it ***very, very well*** for no reason other than that I have not seen 平等 often enough for my brain to decide to recognize it as its own entity and that, among very commong words, 平 is read as へい far more than as ひょう or びょう. In fact, among daily-use vocabulary, 平等 can be considered the only important on'yomi-based word where へい is *not* how 平 is read.
 
 Someone who studied kanji in isolation would not have any idea which reading to pick here either. It's not possible to know with any certainty that 平等 is read as びょうどう instead of へいどう unless you just *know* it.
 
