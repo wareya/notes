@@ -1,4 +1,4 @@
-# Rapid idea generation with GPT3
+# Rapid idea generation with GPT-3
 
 Rapid idea generation tools* are extremely useful for writers to overcome writer's block, churn through bad ideas to get to good ones, notice holes in their story, get fresh perspective on how their story elements could be used, and entertain themselves while "on the clock" without simply idling the time away.
 
@@ -8,7 +8,7 @@ Rapid idea generation tools* are extremely useful for writers to overcome writer
 
 Most of the hype around GPT-3 and text generation models is around producing humanlike text, like completions for incomplete stories, or fictional chat logs, or news articles, or scientific explorations. But what if we use it to produce ***machine-like*** text? People use machines to generate random ideas all the time, from fictional place names to random combinations of foods or drinks. But generators are traditionally hard to craft: someone has to sit down and design all the relevant strings or data, and the ways in which they're allowed to interconnect, and how the dice are rolled, etc. If an overpowered text generation model capable of acting like a human could also act like a machine, then perhaps we could shed the need for that design effort, and create arbitrary generators of arbitrary subject matters just by feeding it a few examples.
 
-I tried this with minimal GPT-2 models. It didn't work. They always got stuck in cycles or started spewing random garbage.
+I tried this with minimal GPT-2 models. It didn't work. They always got stuck in cycles or started spewing random garbage, even if they were fine-tuned.
 
 But with GPT-3, ***it just works***. There are some catches: it really likes to produce certain words at least a few times for certain prompts, and for complex prompts you need to crank the temperature etc. to absurd levels, and for plot/story ideas it ***really*** likes making the protagonist a young woman (a strange form of AI bias--it's probably learning from other plot generators), and for cosmology/origin stories it ***really*** likes talking about "Architects" and "One".
 
