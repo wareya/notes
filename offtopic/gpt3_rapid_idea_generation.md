@@ -14,6 +14,8 @@ But with GPT-3, ***it just works***. There are some catches: it really likes to 
 
 But ***it just works***. ***Without*** fine-tuning. We have unlimited generators--a Generator for Rapid Idea Generation Generators--on our hands.
 
+I don't think I'm the first person to think of this. In fact, I *know* I'm not. But I don't see anyone talking about it, so I'm pretty sure it's an under-explored idea, and I want the idea to spread. Maybe people don't realize just how ridiculously easy it is to make GPT-3 work this way. I repeat: it ***just works***.
+
 Here are some examples. All text past the first highlight is AI-original; it removes the highlighting on continuations for some reason.
 
 I hope this demonstrates to someone how much potential this has and that it gets looked at properly as a viable application of this technology.
