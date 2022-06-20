@@ -10,7 +10,7 @@ Most of the hype around GPT-3 and text generation models is around producing hum
 
 I tried this with minimal GPT-2 models. It didn't work. They always got stuck in cycles or started spewing random garbage, even if they were fine-tuned.
 
-But with GPT-3, ***it just works***. There are some catches: it really likes to produce certain words at least a few times for certain prompts, and for complex prompts you need to crank the temperature etc. to absurd levels, and for plot/story ideas it ***really*** likes making the protagonist a young woman (a strange form of AI bias--it's probably learning from other plot generators), and for cosmology/origin stories it ***really*** likes talking about "Architects" and "One".
+But with GPT-3, ***it just works***. There are some catches: it really likes to produce certain words at least a few times for certain prompts, and for complex prompts you need to crank the temperature etc. to absurd levels, and for plot/story ideas it ***really*** likes making the protagonist a young woman (a strange form of AI bias--it's probably learning from other plot generators), and for cosmology/origin stories it ***really*** likes talking about "Architects" and "One", and it "loses the plot" occasionally (e.g. putting armor in lists of weapons).
 
 But ***it just works***. ***Without*** fine-tuning. We have unlimited generators--a Generator for Rapid Idea Generation Generators--on our hands.
 
