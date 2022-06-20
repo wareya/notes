@@ -41,7 +41,7 @@ Weapons (20):
 
 Output:
 
-![image](https://user-images.githubusercontent.com/585488/174666573-a15ddf86-f4cf-41e9-9a99-b0cf901b0cac.png)
+[![image](https://user-images.githubusercontent.com/585488/174666573-a15ddf86-f4cf-41e9-9a99-b0cf901b0cac.png)](https://user-images.githubusercontent.com/585488/174666573-a15ddf86-f4cf-41e9-9a99-b0cf901b0cac.png)
 
 ## Example: Story Outline Generator
 
@@ -61,7 +61,7 @@ Stories (10):
 
 Output:
 
-![image](https://user-images.githubusercontent.com/585488/174667202-42bad10c-119c-4a73-b96d-3a57f65fb77a.png)
+[![image](https://user-images.githubusercontent.com/585488/174667202-42bad10c-119c-4a73-b96d-3a57f65fb77a.png)](https://user-images.githubusercontent.com/585488/174667202-42bad10c-119c-4a73-b96d-3a57f65fb77a.png)
 
 ## Example: Fantasy Race Generator
 
@@ -83,7 +83,7 @@ Races (10):
 
 Output:
 
-![image](https://user-images.githubusercontent.com/585488/174667942-1eeb8cee-31af-458f-905b-105d1c728fe8.png)
+[![image](https://user-images.githubusercontent.com/585488/174667942-1eeb8cee-31af-458f-905b-105d1c728fe8.png)](https://user-images.githubusercontent.com/585488/174667942-1eeb8cee-31af-458f-905b-105d1c728fe8.png)
 
 ## Example: Fantasy Cosmology Generator
 
@@ -107,5 +107,5 @@ Cosmologies (10):
 
 Output:
 
-![image](https://user-images.githubusercontent.com/585488/174668577-ec77fa6e-1f58-44b1-b6bb-f04db303908b.png)
+[![image](https://user-images.githubusercontent.com/585488/174668577-ec77fa6e-1f58-44b1-b6bb-f04db303908b.png)](https://user-images.githubusercontent.com/585488/174668577-ec77fa6e-1f58-44b1-b6bb-f04db303908b.png)
 
