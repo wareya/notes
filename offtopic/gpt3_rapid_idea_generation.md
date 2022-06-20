@@ -12,7 +12,7 @@ I tried this with minimal GPT-2 models. It didn't work. They always got stuck in
 
 But with GPT-3, ***it just works***. There are some catches: it really likes to produce certain words at least a few times for certain prompts, and for complex prompts you need to crank the temperature etc. to absurd levels, and for plot/story ideas it ***really*** likes making the protagonist a young woman (a strange form of AI bias--it's probably learning from other plot generators), and for cosmology/origin stories it ***really*** likes talking about "Architects" and "One".
 
-But ***it just works***. We have unlimited generators--a Generator for Rapid Idea Generation Generators--on our hands.
+But ***it just works***. ***Without*** fine-tuning. We have unlimited generators--a Generator for Rapid Idea Generation Generators--on our hands.
 
 Here are some examples. All text past the first highlight is AI-original; it removes the highlighting on continuations for some reason.
 
